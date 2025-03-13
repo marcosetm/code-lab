@@ -15,7 +15,7 @@
    ```
 
 ### **3. Set Up Angular Project**
-3. **Create a new Angular project**  
+**Create a new Angular project**  
    ```sh
    ng new project-name
    ```
