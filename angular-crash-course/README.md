@@ -3,6 +3,10 @@
 
 ---
 
+Follow-along repo: [angular-crash-2021](https://github.com/bradtraversy/angular-crash-2021)
+
+## Initial Setup
+
 ### **1. Install Dependencies**
 **Install Node.js** – Download and install from: [Node.js Download](https://nodejs.org/en/download)  
 
