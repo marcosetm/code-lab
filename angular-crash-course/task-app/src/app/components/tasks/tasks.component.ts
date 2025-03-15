@@ -1,7 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, inject, Inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { TaskService } from '../../services/task.service';
 import { Task } from '../../Task';
-import { TASKS } from '../../mock-tasks';
 import { TaskItemComponent } from '../task-item/task-item.component';
 
 @Component({
@@ -11,5 +11,7 @@ import { TaskItemComponent } from '../task-item/task-item.component';
   styleUrl: './tasks.component.css'
 })
 export class TasksComponent {
-  tasks: Task[] = TASKS;
+  private taskService = inject(TaskService);
+  tasks: Task[] = this.taskService.getTasks();
+
 }
