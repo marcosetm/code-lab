@@ -11,6 +11,13 @@ import { TaskItemComponent } from '../task-item/task-item.component';
   styleUrl: './tasks.component.css'
 })
 export class TasksComponent {
+  tasks: Task[] = [];
   private taskService = inject(TaskService);
-  tasks: Task[] = this.taskService.getTasks();
+
+  constructor() {
+    this.taskService.getTasks().then((data: Task[]) => {
+      this.tasks = data;
+    })
+  }
+
 }

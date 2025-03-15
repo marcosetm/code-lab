@@ -1,15 +1,15 @@
 import { Injectable } from '@angular/core';
 import { Task } from '../Task';
-import { TASKS } from '../mock-tasks';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TaskService {
 
-  constructor() { }
+  url = 'http://localhost:3000/tasks';
 
-  getTasks(): Task[] {
-    return TASKS; 
+  async getTasks(): Promise<Task[]> {
+    const data = await fetch(this.url)
+    return (await data.json()) ?? [];
   }
 }
