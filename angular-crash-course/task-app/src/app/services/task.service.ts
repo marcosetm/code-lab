@@ -10,6 +10,6 @@ export class TaskService {
   constructor() { }
 
   getTasks(): Task[] {
-    return TASKS;
+    return TASKS; 
   }
 }

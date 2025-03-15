@@ -13,5 +13,4 @@ import { TaskItemComponent } from '../task-item/task-item.component';
 export class TasksComponent {
   private taskService = inject(TaskService);
   tasks: Task[] = this.taskService.getTasks();
-
 }
