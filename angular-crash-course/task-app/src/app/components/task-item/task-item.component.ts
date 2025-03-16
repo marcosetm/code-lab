@@ -9,4 +9,8 @@ import { Task } from '../../Task';
 })
 export class TaskItemComponent {
   @Input() task!: Task
+
+  onDelete(task: Task) {
+    console.log(task)
+  }
 }
