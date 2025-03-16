@@ -1,4 +1,4 @@
-import { Component, inject, Inject } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TaskService } from '../../services/task.service';
 import { Task } from '../../Task';
@@ -14,8 +14,8 @@ export class TasksComponent {
   tasks: Task[] = [];
   private taskService = inject(TaskService);
 
-  constructor() {
-    this.taskService.getTasks().then((data: Task[]) => {
+  ngOnInit(): void {
+    this.taskService.getTasks().subscribe((data: Task[]) => {
       this.tasks = data;
     })
   }
