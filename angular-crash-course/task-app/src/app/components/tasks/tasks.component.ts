@@ -21,7 +21,13 @@ export class TasksComponent {
   }
 
   deleteTask(task: Task) {
-    console.log(task);
+    this.taskService
+      .deleteTask(Number(task.id))
+      .subscribe(
+        () => (
+          this.tasks = this.tasks.filter((t) => t.id !== task.id)
+        )
+      );
   }
 
 }
