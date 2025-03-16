@@ -30,4 +30,11 @@ export class TasksComponent {
       );
   }
 
+  toggleReminder(task: Task) {
+    task.reminder = !task.reminder
+    this.taskService
+      .toggleReminder(task)
+      .subscribe();
+  }
+
 }
