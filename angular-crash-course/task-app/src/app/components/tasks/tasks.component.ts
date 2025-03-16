@@ -20,4 +20,8 @@ export class TasksComponent {
     })
   }
 
+  deleteTask(task: Task) {
+    console.log(task);
+  }
+
 }
