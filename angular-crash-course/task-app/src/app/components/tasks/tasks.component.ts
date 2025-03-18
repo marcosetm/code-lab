@@ -23,7 +23,7 @@ export class TasksComponent {
 
   deleteTask(task: Task) {
     this.taskService
-      .deleteTask(Number(task.id))
+      .deleteTask(task)
       .subscribe(
         () => (
           this.tasks = this.tasks.filter((t) => t.id !== task.id)
@@ -39,7 +39,11 @@ export class TasksComponent {
   }
 
   addTask(task: Task) {
-    console.log(task)
+    // const newId =  Math.floor(Math.random() * (9999 - 3 + 1)) + 3;
+    // task.id = String(newId);
+    this.taskService
+      .addTasks(task)
+      .subscribe((res) => { this.tasks.push(res) });
   }
 
 }
