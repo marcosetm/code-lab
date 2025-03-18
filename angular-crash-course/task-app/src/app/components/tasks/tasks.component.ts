@@ -38,4 +38,8 @@ export class TasksComponent {
       .subscribe();
   }
 
+  addTask(task: Task) {
+    console.log(task)
+  }
+
 }
