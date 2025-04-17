@@ -5,7 +5,7 @@ Fundamental module of Spring Framework that provides the core features such as:
 - Dependency Injection (DI): Inject required dependencies into objects automatically.
 - Bean Lifecycle Management: Control how bean are created, initialized, and destroyed.
 
-## 1. Inversion of Control
+## Inversion of Control
 Design principle where the control of creating and mapping objects is shifted from the program/code to the framework 
 or container. 
 - Promotes loose coupling
@@ -16,7 +16,7 @@ or container.
 @Service
 @Autowired // tell spring to inject a dependency
 ```
-## 2. Dependency Injection
+## Dependency Injection
 Design pattern used in Spring to automatically provide objects (dependencies) that a class needs, rather than the 
 class creating them itself.
 
@@ -44,3 +44,31 @@ Example, instead of creating `Car` inside the `Driver` class, Spring inject `Car
 Coach theCoach = new CricketCoach();
 DemoController = new DemoController(theCoach);
 ```
+
+## Component Scanning
+Spring will scan Java classes for annotations such as `@Component` and automatically register the beans in the 
+Spring Container.
+
+The `@SpringBootApplication` annotation in the `{name}Application` class is composed of other annotations that 
+trigger certain events. The annotations are `@EnableAutoconfiguatiion`, `@ComponentScan` and `@Configuration`
+
+This entry point scans the base package and sub-packages. Spring then register each as a bean in the ApplicationContext.
+
+Any packages outside the `@SpringBootApplication` needs to be explicitly listed:
+
+```java
+@SpringBootApplication(
+        scanBasePackages={
+                "com.springboot,springcore",
+                "com.springboot.util",
+                "com.acme.cart"
+        })
+public class SpringcoreApplication { ... }
+```
+
+## Coding - Component Scanning
+**Create packages**
+- Create `/rest`
+- Create `/common`
+- Move controller to `/rest` and refactor
+- Move interface and class into `/common` and refactor
