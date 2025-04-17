@@ -87,3 +87,13 @@ object is created.
 **Create setter method**
 
 **Configure the dependency**
+
+## Qualifiers
+Use the `@Qualifier` for multiple implementations.
+
+## Coding - Qualifiers
+**Create new class/component**
+- create new classes in `/common`
+
+**Add Qualifiers**
+- update the controller constructor
