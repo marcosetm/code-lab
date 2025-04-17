@@ -72,3 +72,18 @@ public class SpringcoreApplication { ... }
 - Create `/common`
 - Move controller to `/rest` and refactor
 - Move interface and class into `/common` and refactor
+
+## Setter Injection
+Inject dependencies by calling setter methods(s) on a class.
+- Create the setter method
+- Configure the dependency injection with `@Autowired` annotation
+
+**Main Difference:**  
+**Constructor injection** provides dependencies through a class constructor, ensuring they're available when the 
+object is created.  
+**Setter injection** provides dependencies through public setter methods, allowing optional or later injection.
+
+## Coding - Setter Injection
+**Create setter method**
+
+**Configure the dependency**
