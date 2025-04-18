@@ -97,3 +97,17 @@ Use the `@Qualifier` for multiple implementations.
 
 **Add Qualifiers**
 - update the controller constructor
+
+## Primary
+When there are multiple implementations, there can be only one primary designated
+
+```java
+@Component
+@Primary
+public class TennisCoach implements Coach {
+  //...
+}
+```
+
+**NOTE:** While you can mix `@Qualifier` and `@Primary`, the qualifier will take precedence. Best practice is to use 
+the `@Qualifier`
