@@ -173,3 +173,32 @@ public void doCleanUpSutff() {
 ## Coding -Bean Lifecycle Methods / Hooks
 - Write the init and destroy methods
 - Annotate them
+
+## Java Config Beans
+Configuring beans with java code rather than using special annotations
+- create the config class
+- - define a bean method to configure the bean
+```java
+@Configuration
+public class SportsConfig {
+    @Bean // bean id default to the actual name, swimCoach
+    public Coach swimCoach() {
+        return new SwimCoach();
+    }
+}
+```
+- inject the bean into our controller
+```java
+@RestController
+public class DemoController {
+    private Coach theCoach;
+    @Autowired 
+    public DemoContoller(@Qualifier("swimCoach") Coach theCoach) {
+        this.theCoach = theCoach;
+    }
+}
+```
+**Usage:**
+- Add a third-party class as a Bean to you project
+
+For example, adding S3 to your application. You are not able to edit the AWS SDK to add `@Component` to the class. Instead, you use the java configuration to configure the bean and inject it
