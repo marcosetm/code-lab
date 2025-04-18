@@ -139,3 +139,14 @@ It is disabled by default and the application should be profiled before enabling
 - Set the `@Qualifier`
 - Set the `@Lazy` to the qualified class
   - Add constructor with `System.out.println` to see the intialization
+
+## Bean Scope
+Bean by default is Singleton which means that there is only one object (bean) shared amongst dependencies. There are other scopes:
+- Prototype Scope - new object instance for each injection
+
+## Coding - Bean Scope
+- Setup two `TennisCoach` injections
+- Create the `/check` endpoint to compare 
+- Request the endpoint
+- Update the `TennisCoach` with `@Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)`
+- Request the endpoint
