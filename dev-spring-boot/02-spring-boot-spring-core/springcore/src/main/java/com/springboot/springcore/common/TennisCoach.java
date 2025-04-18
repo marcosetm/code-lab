@@ -1,11 +1,13 @@
 package com.springboot.springcore.common;
 
-import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
 
 @Component
-@Primary
 public class TennisCoach implements Coach {
+
+    public TennisCoach() {
+        System.out.println(getClass().getSimpleName() + "  constructor");
+    }
 
     @Override
     public String getDailyWorkout() {

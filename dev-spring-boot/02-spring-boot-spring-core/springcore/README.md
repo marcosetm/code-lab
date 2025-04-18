@@ -111,3 +111,31 @@ public class TennisCoach implements Coach {
 
 **NOTE:** While you can mix `@Qualifier` and `@Primary`, the qualifier will take precedence. Best practice is to use 
 the `@Qualifier`
+
+## Lazy Initialization
+By default, all of our `@Components` /beans are initialized and made available.
+
+**Lazy initialization** means that it will only be initialized _when needed._
+
+```java
+@Component
+@Lazy
+public class TrackCoach implements Coach {
+    //...
+}
+```
+
+Can be setup as a global configuration in `application.properties`
+```
+spring.main.lazy-initialization=true
+```
+It is disabled by default and the application should be profiled before enabling. 
+
+**Disadvantages:**
+- If a rest controller, then the initialization only happens on request 
+- Issues uncovered only after trying to use
+
+## Coding - Lazy Initialization
+- Set the `@Qualifier`
+- Set the `@Lazy` to the qualified class
+  - Add constructor with `System.out.println` to see the intialization
