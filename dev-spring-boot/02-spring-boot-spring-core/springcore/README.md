@@ -150,3 +150,26 @@ Bean by default is Singleton which means that there is only one object (bean) sh
 - Request the endpoint
 - Update the `TennisCoach` with `@Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)`
 - Request the endpoint
+
+## Bean Lifecycle Methods / Hooks
+1. Spring Container starts
+2. Bean instantiated 
+3. Dependencies Injected
+4. Internal Spring Processing
+5. Custom init method
+
+**Custom Methods/Hooks**
+```java
+@PostConstruct
+public void doInitialStuff() {
+    // ...
+}
+@PreDestroy
+public void doCleanUpSutff() {
+    // ...
+}
+```
+
+## Coding -Bean Lifecycle Methods / Hooks
+- Write the init and destroy methods
+- Annotate them

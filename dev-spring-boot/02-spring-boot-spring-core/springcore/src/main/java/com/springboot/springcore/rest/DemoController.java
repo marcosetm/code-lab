@@ -11,15 +11,14 @@ public class DemoController {
 
     // define private field for DI
     private final Coach theCoach;
-    private final Coach theOtherCoach;
+    // private final Coach theOtherCoach;
 
     @Autowired
     public DemoController(
-            @Qualifier("tennisCoach") Coach theCoach,
-            @Qualifier("tennisCoach") Coach theOtherCoach) {
+            @Qualifier("tennisCoach") Coach theCoach) {
 
         this.theCoach = theCoach;
-        this.theOtherCoach = theOtherCoach;
+        // this.theOtherCoach = theOtherCoach;
     }
 
     // setter injection example
@@ -33,8 +32,8 @@ public class DemoController {
         return theCoach.getDailyWorkout();
     }
 
-    @GetMapping("/check")
-    public String check() {
-        return "theCoach == theOtherCoach is " + (theCoach == theOtherCoach);
-    }
+    // @GetMapping("/check")
+    // public String check() {
+    //     return "theCoach == theOtherCoach is " + (theCoach == theOtherCoach);
+    // }
 }
