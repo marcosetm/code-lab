@@ -1,4 +1,4 @@
-package entity;
+package com.spring.hibernatecrud.entity;
 
 import jakarta.persistence.*;
 
