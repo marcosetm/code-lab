@@ -3,6 +3,9 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 
+// Service
+import { AppStateService } from '../../service/app-state.service';
+
 @Component({
   selector: 'app-login-register',
   imports: [CommonModule, FormsModule],
@@ -23,7 +26,7 @@ export class LoginRegisterComponent {
   regConfirmPassword: string = '';
   dateOfBirth: string = '';
 
-  constructor(private router: Router) {}
+  constructor(public appState: AppStateService, private router: Router) {}
 
   onLogin(): void {
     console.log("onLogin()");
