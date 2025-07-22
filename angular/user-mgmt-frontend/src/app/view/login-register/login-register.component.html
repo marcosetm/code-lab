@@ -101,7 +101,7 @@
                   [(ngModel)]="regEmail"
                   #regEmailRef="ngModel"
                   required
-                  pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
+                  pattern="^(?!.*\.\.)([a-zA-Z0-9._%+-]+)@([a-zA-Z0-9-]+\.)+[a-zA-Z]{2,}$"
                   [class.is-invalid]="regEmailRef.invalid && (regEmailRef.dirty || regEmailRef.touched)">
             <div class="invalid-feedback">Please enter a valid email address.</div>
           </div>

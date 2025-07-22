@@ -55,7 +55,15 @@ export class LoginRegisterComponent {
         if (err.error instanceof ErrorEvent) {
           this.errorMessage = `App error: ${err.error.message}`;
         } else {
-          this.errorMessage = `Server error (status: ${err.status}): ${err.error?.errors[0].defaultMessage || err.message}`;
+          const defaultMsg = Array.isArray(err.error?.errors) && err.error.errors.length > 0 
+            ? err.error.errors[0].defaultMessage
+            : err.error?.message || err.message;
+
+          if (defaultMsg.includes("Detail: Key (email)=")) {
+            this.errorMessage = "An account already exists with that email."
+          } else {
+            this.errorMessage = `${defaultMsg}`;
+          }
         }
       }
     });
