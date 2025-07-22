@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { RegisterRequestDto } from '../../model/register-request.dto';
+import { HttpErrorResponse } from '@angular/common/http';
 
 // Service
 import { AppStateService } from '../../service/app-state.service';
@@ -50,8 +51,12 @@ export class LoginRegisterComponent {
       next: (newAccount) => {
         console.log(`New account registered: ${newAccount}`);
       },
-      error: (err) => {
-        this.errorMessage = `Failed request: ${err}`;
+      error: (err: HttpErrorResponse) => {
+        if (err.error instanceof ErrorEvent) {
+          this.errorMessage = `App error: ${err.error.message}`;
+        } else {
+          this.errorMessage = `Server error (status: ${err.status}): ${err.error?.errors[0].defaultMessage || err.message}`;
+        }
       }
     });
 
