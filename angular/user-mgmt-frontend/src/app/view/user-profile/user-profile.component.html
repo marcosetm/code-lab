@@ -1,0 +1,49 @@
+<div class="container">
+    <h1 class="mt-4">Profile</h1>
+    <hr/>
+    <form [formGroup]="profileForm" novalidate style="min-width: 350px; max-width: 400px; width: 100%;">
+        <div class="mb-3">
+            <label for="firstName" class="form-label">First Name</label>
+            <input formControlName="firstName" type="text" class="form-control" id="firstName">
+            <div class="text-danger" *ngIf="profileForm.get('firstName')?.touched && profileForm.get('firstName')?.hasError('required')">
+                First Name is required.
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label for="lastName" class="form-label">Last Name</label>
+            <input formControlName="lastName" type="text" class="form-control" id="lastName" name="lastName">
+            <div class="text-danger" *ngIf="profileForm.get('lastName')?.touched && profileForm.get('lastName')?.hasError('required')">
+                Last Name is required.
+            </div>
+        </div>
+
+    <div class="mb-3">
+        <label for="dob" class="form-label">Date of Birth</label>
+        <input formControlName="birthDate" type="date" class="form-control" id="dob" name="birthDate">
+        <div class="text-danger" *ngIf="profileForm.get('birthDate')?.touched && profileForm.get('birthDate')?.hasError('required')">
+            Date of birth is required.
+        </div>
+    </div>
+
+    <div class="mb-3">
+        <label for="registerEmail" class="form-label">Email address</label>
+        <input formControlName="email" type="email" class="form-control" id="email" name="email">
+        <div class="text-danger" *ngIf="profileForm.get('email')?.touched && profileForm.get('email')?.hasError('required')">
+            Email is required.
+        </div>
+    </div>
+
+    <div class="mb-3">
+        <label for="password" class="form-label">Password</label>
+        <input type="password" class="form-control" id="password" name="password">
+    </div>
+
+    <div class="mb-3">
+        <label for="confirmPassword" class="form-label">Confirm Password</label>
+        <input type="password" class="form-control" id="confirmPassword" name="confirmPassword">
+    </div>
+        <button type="submit" class="btn btn-primary me-2">Update Account</button>
+        <button type="submit" class="btn btn-danger ms-2">Delete Account</button>
+    </form>
+</div>

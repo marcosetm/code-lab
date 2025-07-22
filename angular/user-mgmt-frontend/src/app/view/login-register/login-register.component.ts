@@ -49,6 +49,7 @@ export class LoginRegisterComponent {
 
     this.authService.registerAccount(registerData).subscribe({
       next: (newAccount) => {
+        this.router.navigate(['/account', newAccount.role, newAccount.id])
         console.log(`New account registered: ${newAccount}`);
       },
       error: (err: HttpErrorResponse) => {
