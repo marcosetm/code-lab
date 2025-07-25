@@ -8,6 +8,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 // Service
 import { AppStateService } from '../../service/app-state.service';
 import { AuthService } from '../../service/auth.service';
+import { LoginRequestDto } from '../../model/login-request.dto';
 
 @Component({
   selector: 'app-login-register',
@@ -35,7 +36,19 @@ export class LoginRegisterComponent {
     private authService: AuthService) {}
 
   onLogin(): void {
-    console.log("onLogin()");
+    const loginData: LoginRequestDto = {
+      email: this.email,
+      password: this.password
+    }
+
+    this.authService.loginAccount(loginData).subscribe({
+      next: (loggedInAccount) => {
+        this.router.navigate(['/account', loggedInAccount.role, loggedInAccount.id]);
+      },
+      error: (err: HttpErrorResponse) => {
+        this.errorMessage = err.error;
+      }
+    })
   }
 
   onRegister(): void {

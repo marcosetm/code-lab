@@ -4,6 +4,7 @@ import { API_ROUTES } from '../config/api-routes';
 import { RegisterRequestDto } from '../model/register-request.dto';
 import { Observable } from 'rxjs';
 import { AccountResponseDto } from '../model/account-response.dto';
+import { LoginRequestDto } from '../model/login-request.dto';
 
 @Injectable({
   providedIn: 'root'
@@ -16,8 +17,7 @@ export class AuthService {
     return this.http.post<AccountResponseDto>(API_ROUTES.CREATE_ACCOUNT, registerData);
   }
 
-  loginAccount() {
-    console.log(API_ROUTES.LOGIN)
+  loginAccount(loginData: LoginRequestDto): Observable<AccountResponseDto> {
+    return this.http.post<AccountResponseDto>(API_ROUTES.LOGIN, loginData);
   }
-
 }
