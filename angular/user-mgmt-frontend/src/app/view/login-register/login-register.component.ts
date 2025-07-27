@@ -9,6 +9,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { AppStateService } from '../../service/app-state.service';
 import { AuthService } from '../../service/auth.service';
 import { LoginRequestDto } from '../../model/login-request.dto';
+import { extractErrorMessage } from '../../shared/utils/error.utils';
 
 @Component({
   selector: 'app-login-register',
@@ -46,7 +47,7 @@ export class LoginRegisterComponent {
         this.router.navigate(['/account', loggedInAccount.role, loggedInAccount.id]);
       },
       error: (err: HttpErrorResponse) => {
-        this.errorMessage = err.error;
+        this.errorMessage = extractErrorMessage(err);
       }
     })
   }
@@ -66,19 +67,7 @@ export class LoginRegisterComponent {
         console.log(`New account registered: ${newAccount}`);
       },
       error: (err: HttpErrorResponse) => {
-        if (err.error instanceof ErrorEvent) {
-          this.errorMessage = `App error: ${err.error.message}`;
-        } else {
-          const defaultMsg = Array.isArray(err.error?.errors) && err.error.errors.length > 0 
-            ? err.error.errors[0].defaultMessage
-            : err.error?.message || err.message;
-
-          if (defaultMsg.includes("Detail: Key (email)=")) {
-            this.errorMessage = "An account already exists with that email."
-          } else {
-            this.errorMessage = `${defaultMsg}`;
-          }
-        }
+        this.errorMessage = extractErrorMessage(err);
       }
     });
 
