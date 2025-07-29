@@ -10,6 +10,7 @@ import { AppStateService } from '../../service/app-state.service';
 import { AuthService } from '../../service/auth.service';
 import { LoginRequestDto } from '../../model/login-request.dto';
 import { extractErrorMessage } from '../../shared/utils/error.utils';
+import { AccountResponseDto } from '../../model/account-response.dto';
 
 @Component({
   selector: 'app-login-register',
@@ -44,7 +45,7 @@ export class LoginRegisterComponent {
 
     this.authService.loginAccount(loginData).subscribe({
       next: (loggedInAccount) => {
-        this.router.navigate(['/account', loggedInAccount.role, loggedInAccount.id]);
+        this.goToAccount(loggedInAccount);
       },
       error: (err: HttpErrorResponse) => {
         this.errorMessage = extractErrorMessage(err);
@@ -63,14 +64,17 @@ export class LoginRegisterComponent {
 
     this.authService.registerAccount(registerData).subscribe({
       next: (newAccount) => {
-        this.router.navigate(['/account', newAccount.role, newAccount.id])
-        console.log(`New account registered: ${newAccount}`);
+        this.goToAccount(newAccount);
       },
       error: (err: HttpErrorResponse) => {
         this.errorMessage = extractErrorMessage(err);
       }
     });
+  }
 
+  goToAccount(account: AccountResponseDto): void {
+    this.authService.setSession(account);
+    this.router.navigate(['/account']);
   }
 
 }

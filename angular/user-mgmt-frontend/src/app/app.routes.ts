@@ -1,10 +1,13 @@
 import { Routes } from '@angular/router';
 
+
 // Views/Components
 import { LoginRegisterComponent } from './view/login-register/login-register.component';
 import { UserProfileComponent } from './view/user-profile/user-profile.component';
+import { authGuard } from './guard/auth.guard';
 
 export const routes: Routes = [
-    {path: '', component: LoginRegisterComponent},
-    {path: 'account/user/:id', component: UserProfileComponent}
+    {path: '', redirectTo: '/login', pathMatch: 'full'},
+    {path: 'login',  component: LoginRegisterComponent },
+    {path: 'account/user/:id', component: UserProfileComponent, canActivate: [authGuard]}
 ];
