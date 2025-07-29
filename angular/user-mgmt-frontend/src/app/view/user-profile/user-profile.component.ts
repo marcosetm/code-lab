@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { UserService } from '../../service/user.service';
 import { AccountResponseDto } from '../../model/account-response.dto';
 import { CommonModule } from '@angular/common';
+import { AuthService } from '../../service/auth.service';
 
 @Component({
   selector: 'app-user-profile',
@@ -19,6 +20,7 @@ export class UserProfileComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private route: ActivatedRoute,
+    private authService: AuthService,
     private userService: UserService) {}
 
   ngOnInit(): void {
@@ -29,15 +31,22 @@ export class UserProfileComponent implements OnInit {
         email: ['', Validators.required]
       });
 
-      const id = this.route.snapshot.paramMap.get('id');
+      this.account = this.authService.getSessionAccount();
 
-      if (id) {
-        this.userService.getUserById(id).subscribe(account => {
-          this.account = account;
-          console.log(account);
-          this.profileForm.patchValue(account);
-        });
+      if (this.account != null) {
+        this.profileForm.patchValue(this.account);
       }
+
+      // storeUserAccount = aut
+      // const id = this.route.snapshot.paramMap.get('id');
+
+      // if (id) {
+      //   this.userService.getUserById(id).subscribe(account => {
+      //     this.account = account;
+      //     console.log(account);
+      //     this.profileForm.patchValue(account);
+      //   });
+      // }
 
   }
 

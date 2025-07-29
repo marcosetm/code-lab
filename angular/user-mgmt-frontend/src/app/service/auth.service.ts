@@ -34,4 +34,9 @@ export class AuthService {
     sessionStorage.removeItem(this.tokenKey);
   }
 
+  getSessionAccount(): any {
+    const storedUser = sessionStorage.getItem(this.tokenKey);
+    return storedUser ? JSON.parse(storedUser) : null;
+  }
+
 }
