@@ -18,32 +18,35 @@
             </div>
         </div>
 
-    <div class="mb-3">
-        <label for="dob" class="form-label">Date of Birth</label>
-        <input formControlName="birthDate" type="date" class="form-control" id="dob" name="birthDate">
-        <div class="text-danger" *ngIf="profileForm.get('birthDate')?.touched && profileForm.get('birthDate')?.hasError('required')">
-            Date of birth is required.
+        <div class="mb-3">
+            <label for="dob" class="form-label">Date of Birth</label>
+            <input formControlName="birthDate" type="date" class="form-control" id="dob" name="birthDate">
+            <div class="text-danger" *ngIf="profileForm.get('birthDate')?.touched && profileForm.get('birthDate')?.hasError('required')">
+                Date of birth is required.
+            </div>
         </div>
-    </div>
 
-    <div class="mb-3">
-        <label for="registerEmail" class="form-label">Email address</label>
-        <input formControlName="email" type="email" class="form-control" id="email" name="email">
-        <div class="text-danger" *ngIf="profileForm.get('email')?.touched && profileForm.get('email')?.hasError('required')">
-            Email is required.
+        <div class="mb-3">
+            <label for="registerEmail" class="form-label">Email address</label>
+            <input formControlName="email" type="email" class="form-control" id="email" name="email">
+            <div class="text-danger" *ngIf="profileForm.get('email')?.touched && profileForm.get('email')?.hasError('required')">
+                Email is required.
+            </div>
         </div>
-    </div>
 
-    <div class="mb-3">
-        <label for="password" class="form-label">Password</label>
-        <input type="password" class="form-control" id="password" name="password">
-    </div>
+        <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input type="password" class="form-control" id="password" name="password">
+        </div>
 
-    <div class="mb-3">
-        <label for="confirmPassword" class="form-label">Confirm Password</label>
-        <input type="password" class="form-control" id="confirmPassword" name="confirmPassword">
-    </div>
-        <button type="submit" class="btn btn-primary me-2">Update Account</button>
-        <button type="submit" class="btn btn-danger ms-2">Delete Account</button>
+        <div class="mb-3">
+            <label for="confirmPassword" class="form-label">Confirm Password</label>
+            <input type="password" class="form-control" id="confirmPassword" name="confirmPassword">
+        </div>
+        <div class="d-flex justify-content-between">
+            <button type="submit" class="btn btn-primary me-2">Update Account</button>
+            <button type="submit" class="btn btn-danger ms-2">Delete Account</button>
+            <button (click)="onLogout()" class="btn btn-outline-danger ms-2">Logout</button>
+        </div>
     </form>
 </div>

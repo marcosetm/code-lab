@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
-import { UserService } from '../../service/user.service';
 import { AccountResponseDto } from '../../model/account-response.dto';
 import { CommonModule } from '@angular/common';
 import { AuthService } from '../../service/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-profile',
@@ -19,9 +18,8 @@ export class UserProfileComponent implements OnInit {
   
   constructor(
     private fb: FormBuilder,
-    private route: ActivatedRoute,
     private authService: AuthService,
-    private userService: UserService) {}
+    private router: Router) {}
 
   ngOnInit(): void {
       this.profileForm = this.fb.group({
@@ -36,20 +34,10 @@ export class UserProfileComponent implements OnInit {
       if (this.account != null) {
         this.profileForm.patchValue(this.account);
       }
-
-      // storeUserAccount = aut
-      // const id = this.route.snapshot.paramMap.get('id');
-
-      // if (id) {
-      //   this.userService.getUserById(id).subscribe(account => {
-      //     this.account = account;
-      //     console.log(account);
-      //     this.profileForm.patchValue(account);
-      //   });
-      // }
-
   }
 
-
-
+  onLogout(): void {
+    this.authService.logout();
+    this.router.navigate(['']);
+  }
 }
