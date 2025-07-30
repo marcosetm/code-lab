@@ -15,7 +15,7 @@ export class AuthService {
   constructor(private http: HttpClient) { }
 
   registerAccount(registerData: RegisterRequestDto): Observable<AccountResponseDto> {
-    return this.http.post<AccountResponseDto>(API_ROUTES.CREATE_ACCOUNT, registerData);
+    return this.http.post<AccountResponseDto>(API_ROUTES.ACCOUNT, registerData);
   }
 
   loginAccount(loginData: LoginRequestDto): Observable<AccountResponseDto> {
