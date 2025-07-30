@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
 import { UpdateRequestDto } from '../../model/update-request.dto';
 import { UserService } from '../../service/user.service';
 import { HttpErrorResponse } from '@angular/common/http';
+import { extractErrorMessage } from '../../shared/utils/error.utils';
 
 @Component({
   selector: 'app-user-profile',
@@ -18,6 +19,7 @@ export class UserProfileComponent implements OnInit {
 
   profileForm!: FormGroup;
   account!: AccountResponseDto;
+  errorMessage = "";
   
   constructor(
     private fb: FormBuilder,
@@ -88,7 +90,7 @@ export class UserProfileComponent implements OnInit {
         this.loadForm();
       },
       error: (err: HttpErrorResponse) => {
-        console.log(err.error);
+        this.errorMessage = extractErrorMessage(err);
       }
     })
   }
