@@ -93,6 +93,19 @@ export class UserProfileComponent implements OnInit {
     })
   }
 
+  onDelete(): void {
+    
+    this.userService.deleteUser(this.account.id).subscribe({
+      next: (isDeleted: any) => {
+        this.onLogout();
+      },
+      error: (err: HttpErrorResponse) => {
+        console.log(err.error);
+      }
+    });
+    
+  }
+
   onLogout(): void {
     this.authService.logout();
     this.router.navigate(['']);

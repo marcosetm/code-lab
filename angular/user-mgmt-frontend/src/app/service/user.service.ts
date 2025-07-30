@@ -19,4 +19,8 @@ export class UserService {
   updateUser(id: string, data: UpdateRequestDto): Observable<AccountResponseDto> {
     return this.http.patch<AccountResponseDto>(`${API_ROUTES.ACCOUNT}/${id}`, data);
   }
+
+  deleteUser(id: string): Observable<any> {
+    return this.http.delete<any>(`${API_ROUTES.ACCOUNT}/${id}`);
+  }
 }
