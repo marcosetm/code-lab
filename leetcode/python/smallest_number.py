@@ -1,5 +1,5 @@
 # https://leetcode.com/problems/construct-smallest-number-from-di-string/?envType=problem-list-v2&envId=string
-
+from itertools import permutations
 def matches_pattern(pattern, num):
     for i, p in enumerate(pattern):
         if p == "I" and (num[i] > num[i + 1]):
